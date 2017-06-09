@@ -1,0 +1,73 @@
+haskellR_getting_started
+========================================================
+author: 
+date: 
+autosize: true
+
+
+Ceci n'est pas une pipe
+========================================================
+
+```{r, echo=FALSE}
+library(purrr)
+```
+
+&nbsp; 
+
+```
+bonjour = 
+  getLine >>= putStrLn . ("hello " ++)
+```
+
+
+&nbsp; 
+
+[this would be]
+
+```{r, eval=FALSE}
+readline() %>% (function(name) paste0("hello ", name))
+```
+
+This is not a fancy way of writing purrr's compose function ...
+========================================================
+
+&nbsp; 
+
+``` 
+dostuff xs = negate . log . maximum $ xs
+```
+
+&nbsp; 
+
+[this would be _compose_]
+
+```{r}
+dostuff <- compose(function(x) -x, log, max)
+```
+
+
+Neither is this an alternative syntax for purrr's partial.
+========================================================
+
+&nbsp; 
+
+```
+plus1 = (+1)
+(plus1)
+```
+
+&nbsp; 
+
+[this would be _partial_]
+
+```{r}
+plus1 <- partial(`+`,1)
+```
+
+
+This is Haskell!
+========================================================
+
+
+https://wiki.haskell.org/Haskell_in_industry
+

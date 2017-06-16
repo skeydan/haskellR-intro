@@ -1,4 +1,4 @@
-haskellR_getting_started
+Getting started with HaskellR
 ========================================================
 author: 
 date: 
@@ -71,3 +71,28 @@ This is Haskell!
 
 https://wiki.haskell.org/Haskell_in_industry
 
+
+
+
+If Haskell's so great, what's the problem?
+========================================================
+
+&nbsp;
+
+- some things are very hard to do / not implemented: see <a href="https://github.com/Gabriel439/post-rfc/blob/master/sotu.md">State of the Haskell ecosystem</a> (continuously updated)
+
+    - _Machine Learning_
+
+    - _Data Science_
+    
+    - _Visualization_
+    
+- ... right what R is great at!
+
+
+Enter: HaskellR!
+========================================================
+
+&nbsp;
+
+- developed by <a href=http://tweag.io/>Tweag I/O</a>

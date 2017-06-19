@@ -1,7 +1,29 @@
-Getting started with HaskellR
+<style>
+.footer {
+    position: fixed; 
+    top: 90%;
+    text-align:right; 
+    width:97%;
+    margin-top:-150px;
+}
+.reveal section img {
+  border: 0px;
+  box-shadow: 0 0 0 0;
+}
+.reveal table td {
+  border: 0px;
+}
+
+.reveal table {
+  border: 0px;
+}
+</style>
+
+
+Haskell, R, HaskellR: Combining the best of two worlds
 ========================================================
-author: 
-date: 
+author: Sigrid Keydana, Trivadis
+date: 2017-07-06
 autosize: true
 
 
@@ -15,18 +37,22 @@ library(purrr)
 &nbsp; 
 
 ```
-bonjour = 
-  getLine >>= putStrLn . ("hello " ++)
+getLine >>= putStrLn . ("hello " ++)
 ```
 
 
 &nbsp; 
 
-[this would be]
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, size="small"}
+# this would be
 readline() %>% (function(name) paste0("hello ", name))
 ```
+
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
+
 
 This is not a fancy way of writing purrr's compose function ...
 ========================================================
@@ -39,11 +65,14 @@ dostuff xs = negate . log . maximum $ xs
 
 &nbsp; 
 
-[this would be _compose_]
-
 ```{r}
+# this is purrr compose
 dostuff <- compose(function(x) -x, log, max)
 ```
+
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
 
 
 Neither is this an alternative syntax for purrr's partial.
@@ -53,25 +82,33 @@ Neither is this an alternative syntax for purrr's partial.
 
 ```
 plus1 = (+1)
-(plus1)
 ```
 
 &nbsp; 
 
-[this would be _partial_]
-
 ```{r}
+# this would be partial
 plus1 <- partial(`+`,1)
 ```
 
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
 
 This is Haskell!
 ========================================================
+incremental:true
 
+&nbsp;
 
-https://wiki.haskell.org/Haskell_in_industry
-
-
+- pure, strongly typed, lazily evaluated language
+- elegant code that reads just like a description of the algorithm itself
+- widely <a href="https://wiki.haskell.org/Haskell_in_industry">used in industry</a>
+  (financial and trading systems, real-time applications, metaprogramming, strongly parallelized systems, web applications, cryptography ... etc. etc. etc.)
+ 
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
 
 
 If Haskell's so great, what's the problem?
@@ -89,10 +126,56 @@ If Haskell's so great, what's the problem?
     
 - ... right what R is great at!
 
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
 
 Enter: HaskellR!
 ========================================================
+incremental:true
 
 &nbsp;
 
 - developed by <a href=http://tweag.io/>Tweag I/O</a>
+- embedded R interpreter (inline-r)
+- interactive prompt for evaluating Haskell as well as R code (H)
+- Jupyter notebook compatible (ihaskell-inline-r)
+
+
+HaskellR in a nutshell
+========================================================
+incremental:true
+
+&nbsp;
+
+- no marshalling/unmarshalling of arguments (R values are pointers to SEXPRECs as in R itself)
+- R capabilities provided by hosting an embedded instance of the R interpreter
+- everything R happens inside the R _monad_
+- between calls to the embedded R interpreter, state is preserved 
+
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
+ 
+Let's get this more concrete...
+========================================================
+
+&nbsp;
+
+Demo time!
+
+- Intro to HaskellR demo
+- Stock market demo 
+
+<table>
+<tr>
+<td><img src='demo1.png' width='300px' /></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><img src='demo2.png' width='300px'/></td>
+</tr>
+</table>
+
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
+

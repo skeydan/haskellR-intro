@@ -3,9 +3,16 @@
     position: fixed; 
     top: 90%;
     text-align:right; 
-    width:97%;
-    margin-top:-150px;
+    width:100%;
 }
+
+.banner {
+    position: fixed; 
+    top: 0%;
+    text-align:right; 
+    width:100%;
+}
+
 .reveal section img {
   border: 0px;
   box-shadow: 0 0 0 0;
@@ -17,14 +24,38 @@
 .reveal table {
   border: 0px;
 }
+
+.reveal h1 {
+  font-size: 1.6em;
+}
 </style>
 
 
-Haskell, R, HaskellR: Combining the best of two worlds
+Haskell >>= R %>% HaskellR!
 ========================================================
 author: Sigrid Keydana, Trivadis
-date: 2017-07-06
+date: 2017/06/07
 autosize: true
+incremental:true
+
+system("whoami")
+========================================================
+
+&nbsp;
+
+- Sigrid Keydana
+- bit of a  contender for the _max no. of career changes_ competition (_not_ on Kaggle)
+- data scientist and machine learning expert at <a href=www.trivadis.com>Trivadis</a>
+- currently mostly specialising in Deep Learning
+- _functional programming aficionada but not enough time_
+
+<div class="banner">
+<img src='tri_logo_high.jpg' border=0 width='200px'>
+</div>
+
+<div class="footer">
+<img src='cube3.png' border=0 width='122px'>
+</div>
 
 
 Ceci n'est pas une pipe
@@ -37,6 +68,8 @@ library(purrr)
 &nbsp; 
 
 ```
+-- get sth from stdin and print "hello, <x>"
+
 getLine >>= putStrLn . ("hello " ++)
 ```
 
@@ -45,7 +78,8 @@ getLine >>= putStrLn . ("hello " ++)
 
 
 ```{r, eval=FALSE, size="small"}
-# this would be
+# this would be it...
+
 readline() %>% (function(name) paste0("hello ", name))
 ```
 
@@ -60,6 +94,8 @@ This is not a fancy way of writing purrr's compose function ...
 &nbsp; 
 
 ``` 
+-- find the max value of a list, take its logarithm and make it negative
+
 dostuff xs = negate . log . maximum $ xs
 ```
 
@@ -67,6 +103,7 @@ dostuff xs = negate . log . maximum $ xs
 
 ```{r}
 # this is purrr compose
+
 dostuff <- compose(function(x) -x, log, max)
 ```
 
@@ -81,13 +118,16 @@ Neither is this an alternative syntax for purrr's partial.
 &nbsp; 
 
 ```
+-- a function that adds 1 to its argument
+
 plus1 = (+1)
 ```
 
 &nbsp; 
 
 ```{r}
-# this would be partial
+# this would be purrr's partial
+
 plus1 <- partial(`+`,1)
 ```
 
@@ -97,7 +137,7 @@ plus1 <- partial(`+`,1)
 
 This is Haskell!
 ========================================================
-incremental:true
+
 
 &nbsp;
 
@@ -159,6 +199,7 @@ incremental:true
  
 Let's get this more concrete...
 ========================================================
+incremental:false
 
 &nbsp;
 
